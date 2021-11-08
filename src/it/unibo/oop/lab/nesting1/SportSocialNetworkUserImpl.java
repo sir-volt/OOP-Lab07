@@ -53,9 +53,9 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * TODO: initialize properly these sports
      */
     static {
-        SOCCER = null;
-        F1 = null;
-        MOTOGP = null;
+        SOCCER = new Sport();
+        F1 = new Sport();
+        MOTOGP = new Sport();
         VOLLEY = null;
         BASKET = null;
         BIKE = null;
