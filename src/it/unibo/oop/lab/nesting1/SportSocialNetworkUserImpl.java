@@ -161,14 +161,13 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
 
 		@Override
 		public boolean equals(final Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Sport other = (Sport) obj;
-			return Objects.equals(sportName, other.sportName);
+			/*we check if object is an instance of Sport
+			 * if it's not, return false, else we check (after a cast of sport) if the object has the same name of this sport
+			 */
+			if (obj instanceof Sport) {
+				return Objects.equals(sportName, ((Sport) obj).sportName);
+			}
+			return false;
 		}
     }
 }
