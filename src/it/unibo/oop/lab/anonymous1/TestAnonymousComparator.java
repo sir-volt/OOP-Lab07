@@ -76,13 +76,17 @@ public final class TestAnonymousComparator {
          * 
          * REFER TO LESSON 13-Advanced-Mechanisms.pdf, slide 41
          */
-        denzelUsers.sort(new Comparator<User>() {
+        /*creating this specific var in order to have an anonymous comparator
+        * and without having to reapeat code multiple times*/
+        final var byAgeAscending = new Comparator<User>() {
 			@Override
-			public int compare(User o1, User o2) {
-				return o1.getAge() - o2.getAge();
+			public int compare(final User o1, final User o2) {
+				return Integer.compare(o1.getAge(), o2.getAge());
 			}
         	
-        });
+        };
+        
+        denzelUsers.sort(byAgeAscending);
         /*
          * expected Result
          */
@@ -113,14 +117,11 @@ public final class TestAnonymousComparator {
          * NOTE: in order to sort a list think about a method of the utility
          * class Collections
          */
-        Collections.sort(rossiUsers, new Comparator<User>() {
-
-			@Override
-			public int compare(User o1, User o2) {
-				return o1.getAge() - o2.getAge();
-			}
-        	
-        }.reversed());
+        /*while not specifically necessary, we can make another variable
+         * which uses the previous var comparator, with a reversed so we get a descending order of elements
+         */
+        final var byAgeDescending = byAgeAscending.reversed();
+        Collections.sort(rossiUsers, byAgeDescending);
         /*
          * expected Result
          */
