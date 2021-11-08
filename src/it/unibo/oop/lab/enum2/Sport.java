@@ -38,13 +38,13 @@ public enum Sport {
      * - soccer
      * 
      */
-	BASKET(INDOOR,"Basketball"),
-	VOLLEY(INDOOR,"Volleyball"),
-	TENNIS(OUTDOOR,"Tennis"),
-	BIKE(OUTDOOR,"Biking"),
-	F1(OUTDOOR,"Formula1"),
-	MOTOGP(OUTDOOR,"MotoGP"),
-	SOCCER(OUTDOOR,"Soccer");
+	BASKET(INDOOR,9,"Basketball"),
+	VOLLEY(INDOOR,9,"Volleyball"),
+	TENNIS(OUTDOOR,1,"Tennis"),
+	BIKE(OUTDOOR,1,"Biking"),
+	F1(OUTDOOR,1,"Formula1"),
+	MOTOGP(OUTDOOR,1,"MotoGP"),
+	SOCCER(OUTDOOR,12,"Soccer");
 	
 	
 
@@ -95,4 +95,19 @@ public enum Sport {
      * 
      * Returns the string representation of a sport
      */
+	public boolean isIndividualSport() {
+		return this.noTeamMembers == 1;
+	}
+	
+	public boolean isIndoorSport() {
+		return this.place == INDOOR;
+	}
+	
+	public Place getPlace() {
+		return this.place;
+	}
+	
+	public String toString() {
+		return "Sport: " + this.actualName +"; Place: " + this.place + "; is the sport individual? " + this.noTeamMembers; 
+	}
 }
